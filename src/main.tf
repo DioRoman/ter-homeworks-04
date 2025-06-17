@@ -1,19 +1,25 @@
-resource "yandex_vpc_network" "develop" {
-  name = var.vpc_name
-}
+# resource "yandex_vpc_network" "develop" {
+#   name = var.vpc_name
+# }
 
-resource "yandex_vpc_subnet" "develop_a" {
-  name           = var.vpc_subnet_name_a
-  zone           = var.default_zone_a
-  network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = var.default_cidr_a
-}
+# resource "yandex_vpc_subnet" "develop_a" {
+#   name           = var.vpc_subnet_name_a
+#   zone           = var.default_zone_a
+#   network_id     = yandex_vpc_network.develop.id
+#   v4_cidr_blocks = var.default_cidr_a
+# }
 
-resource "yandex_vpc_subnet" "develop_b" {
-  name           = var.vpc_subnet_name_b
-  zone           = var.default_zone_b
-  network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = var.default_cidr_b
+# resource "yandex_vpc_subnet" "develop_b" {
+#   name           = var.vpc_subnet_name_b
+#   zone           = var.default_zone_b
+#   network_id     = yandex_vpc_network.develop.id
+#   v4_cidr_blocks = var.default_cidr_b
+# }
+module "vpc" {
+  source          = "./modules/vpc"
+  network_name    = var.vpc_name
+  zone            = var.default_zone_a
+  v4_cidr_blocks  = var.default_cidr_a
 }
 
 module "marketing-vm" {
