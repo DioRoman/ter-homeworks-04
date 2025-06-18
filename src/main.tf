@@ -19,8 +19,8 @@ module "vpc_marketing" {
   source       = "./modules/vpc"
   env_name     = var.vms_mod_marketing[0].env_name
   subnets = [
-    { zone = "ru-central1-a", cidr = "10.0.1.0/24" },
-    { zone = "ru-central1-b", cidr = "10.0.3.0/24" },
+    { zone = var.default_zone_a, cidr = var.default_cidr_a },
+    { zone = var.default_zone_b, cidr = var.default_cidr_b },
   ]
 }
 
@@ -28,7 +28,7 @@ module "vpc_analitics" {
   source       = "./modules/vpc"
   env_name     = var.vms_mod_analitics[0].env_name
   subnets = [
-    { zone = "ru-central1-a", cidr = "10.0.2.0/24" },
+    { zone = var.default_zone_a, cidr = var.default_cidr_a },
   ]
 }
 
