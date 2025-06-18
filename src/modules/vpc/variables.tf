@@ -1,14 +1,12 @@
-variable "network_name" {
-  description = "Имя создаваемой сети"
+variable "env_name" {
   type        = string
+  description = "Environment name (e.g., production, develop)"
 }
 
-variable "zone" {
-  description = "Зона доступности (например: ru-central1-a)"
-  type        = string
-}
-
-variable "v4_cidr_blocks" {
-  description = "CIDR блок для подсети (например: 10.0.0.0/24)"
-  type        = list(string)
+variable "subnets" {
+  type = list(object({
+    zone = string
+    cidr = string
+  }))
+  description = "List of subnets with zone and CIDR block"
 }

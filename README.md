@@ -1,26 +1,3 @@
 # ter-homeworks-04
-<!-- BEGIN_TF_DOCS -->
-## Requirements
 
-No requirements.
-
-## Providers
-
-No providers.
-
-## Modules
-
-No modules.
-
-## Resources
-
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
-<!-- END_TF_DOCS -->
+cd /mnt/c/Users/rlyst/Netology/ter-homeworks-04/src

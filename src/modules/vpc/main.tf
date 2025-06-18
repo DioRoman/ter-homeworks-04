@@ -4,16 +4,17 @@ terraform {
       source = "yandex-cloud/yandex"
     }
   }
-  required_version = ">=1.8.4"  ### some test
+  required_version = ">=1.8.4"
 }
 
 resource "yandex_vpc_network" "develop" {
-  name = var.network_name
+  name = var.env_name
 }
 
 resource "yandex_vpc_subnet" "develop" {
-  name           = "${var.network_name}-subnet"
-  zone           = var.zone
+  for_each       = { for subnet in var.subnets : "${subnet.zone}_${subnet.cidr}" => subnet }
+  name           = "${var.env_name}-${each.value.zone}"
+  zone           = each.value.zone
   network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = var.v4_cidr_blocks
+  v4_cidr_blocks = [each.value.cidr]
 }

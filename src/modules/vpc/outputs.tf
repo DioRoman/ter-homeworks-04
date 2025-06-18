@@ -1,9 +1,7 @@
 output "network_id" {
-  description = "ID созданной сети"
-  value       = yandex_vpc_network.develop.id
+  value = yandex_vpc_network.develop.id
 }
 
-output "subnet_id" {
-  description = "ID созданной подсети"
-  value       = yandex_vpc_subnet.develop.id
+output "subnet_ids" {
+  value = [for subnet in yandex_vpc_subnet.develop : subnet.id]
 }
